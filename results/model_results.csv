@@ -1,0 +1,7 @@
+model,owner,public_macro_f1,role
+DenseNet-121 - Simple Grayscale,Andrew,0.70882,DenseNet experiment
+DenseNet-121 - Robust Grayscale + Augmentation/Mixup/TTA,Andrew,0.72146,DenseNet experiment
+DenseNet-121 - RGB + ImageNet Normalization,Andrew,0.72812,DenseNet experiment
+ResNet-18 + Attention,David,0.7353,Team model
+EfficientNet,Alice,0.74714,Team model
+Rule-based Ensemble,Team,0.76374,Final ensemble
