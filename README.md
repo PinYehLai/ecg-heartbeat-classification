@@ -40,6 +40,46 @@ The test distribution was intentionally shifted to simulate ECG images originati
 As a result, strong validation performance does not necessarily translate directly to strong test-set performance. Robustness to changes in waveform appearance, image style, and noise is therefore a central focus of the project.
 
 ---
+## Dataset Overview
+
+The dataset contains **87,554 labeled training ECG images** and **21,892 unlabeled test images** across five heartbeat classes.
+
+### Severe Class Imbalance
+
+Class `0` dominates the training distribution, accounting for approximately **82.8%** of all labeled samples. Several minority classes represent only a small fraction of the dataset.
+
+<p align="center">
+  <img src="assets/class_distribution_bar.jpg" width="65%">
+</p>
+
+<p align="center">
+  <em>Training-set class distribution. The strong dominance of class 0 motivates the use of Macro-F1 rather than overall accuracy.</em>
+</p>
+
+Because accuracy can be dominated by performance on the majority class, **Macro-F1** is used as the primary evaluation metric so that each heartbeat class contributes equally to the final score.
+
+### ECG Image Variation
+
+ECG images also show substantial variation in waveform shape, amplitude, noise, and rendering style.
+
+<table>
+  <tr>
+    <td align="center"><strong>Class 0 Examples</strong></td>
+    <td align="center"><strong>Class 3 Examples</strong></td>
+  </tr>
+  <tr>
+    <td><img src="assets/class0_examples.jpg" width="100%"></td>
+    <td><img src="assets/class3_examples.jpg" width="100%"></td>
+  </tr>
+</table>
+
+The samples highlight two modeling challenges:
+
+- **Intra-class variation:** ECGs within the same class can have visibly different waveform shapes and noise patterns.
+- **Inter-class ambiguity:** different heartbeat classes can share similar visual structures, making image-only classification non-trivial.
+
+Together with the shifted test distribution, these characteristics motivated the use of pretrained CNN backbones, ECG-specific augmentation, class-imbalance mitigation, test-time augmentation, and ensemble learning.
+---
 
 ## My Contributions
 
